@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>LinkShottener</title>
+    </head>
+    <body>
+        <center>
+        <h1>LinkShottener</h1>
+        <form action="" method="post"  novalidate>
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.long_url.label }}<br>
+                {{ form.long_url(size=32) }}<br>
+                {% for error in form.long_url.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.token.label }}<br>
+                {{ form.token(size=32) }}<br>
+                {% for error in form.token.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>{{ form.submit() }}</p>
+        </form>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        
+        {% for message in messages %}
+        <p><a href="{{ message }}">{{ message }}</a></p>
+        {% endfor %}
+        
+        {% endif %}
+        {% endwith %}
+        </center>
+    </body>
+</html>
