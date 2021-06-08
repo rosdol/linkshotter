@@ -27,7 +27,11 @@
         {% if messages %}
         
         {% for message in messages %}
-        <p><a href="{{ message }}">{{ message }}</a></p>
+            {% if 'http' in message %}
+                <p><a href="{{ message }}">{{ message }}</a></p>
+            {% else %}
+                <p>{{ message }}</p>
+            {% endif %}
         {% endfor %}
         
         {% endif %}
