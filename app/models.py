@@ -8,7 +8,6 @@ class ShortedLink(db.Model):
     token = db.Column(db.String(64), unique=True)
     long_url = db.Column(db.String(128))
 
-
     def set_token(self, token):
         if token == '':
             token = hashids.encode(self.id)
